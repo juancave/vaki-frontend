@@ -5,8 +5,7 @@ import ExpensesPage from './pages/ExpensesPage';
 import HomePage from './pages/HomePage';
 import MyAccountPage from './pages/MyAccountPage';
 import Navbar from './components/Navbar';
-
-import wwcLogo from './assets/wwc-logo.png';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,9 +20,7 @@ function App() {
           <Route path="/my-account" element={<MyAccountPage />} />
         </Routes>
       </main>
-      <footer className="flex justify-center">
-        <img src={wwcLogo} alt="WWC Logo" />
-      </footer>
+      <Footer />
     </div>
   );
 }

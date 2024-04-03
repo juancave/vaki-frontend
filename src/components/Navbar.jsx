@@ -21,16 +21,16 @@ function Navbar() {
         <NavbarLink pathname={pathname} text="Expenses" path="/expenses" />
         <NavbarLink pathname={pathname} text="Groups" path="/groups" />
       </div>
-      <NavbarLink pathname={pathname} text="My Account" path="/my-account" />
+      <NavbarLink pathname={pathname} text="My Account" path="/my-account" hideOnMobile />
     </header>
   );
 }
 
-function NavbarLink({ pathname, path, text }) {
+function NavbarLink({ pathname, path, text, hideOnMobile }) {
   return (
     <Link className="hover:underline relative flex justify-center" to={path}>
       {text}
-      {pathname === path && <TriangleUp />}
+      {pathname === path && <TriangleUp hideOnMobile={hideOnMobile} />}
     </Link>
   );
 }
@@ -39,17 +39,22 @@ NavbarLink.propTypes = {
   pathname: PropTypes.string,
   path: PropTypes.string,
   text: PropTypes.string,
+  hideOnMobile: PropTypes.bool,
 };
 
-function TriangleUp() {
+function TriangleUp({ hideOnMobile }) {
   return (
     <div
-      className="w-0 h-0 absolute bottom-[-16px] sm:bottom-[-18px]
+      className={`w-0 h-0 absolute bottom-[-16px] sm:bottom-[-18px] ${hideOnMobile ? 'hidden sm:block' : ''}
     border-l-[8px] border-l-transparent
     border-b-[8px] border-b-white
-    border-r-[8px] border-r-transparent"
+    border-r-[8px] border-r-transparent`}
     ></div>
   );
 }
+
+TriangleUp.propTypes = {
+  hideOnMobile: PropTypes.bool,
+};
 
 export default Navbar;
