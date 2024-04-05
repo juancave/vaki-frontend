@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen justify-between">
       <Navbar />
-      <main className="mt-4 mb-auto px-4">
+      <main className="mt-4 mb-auto px-8 lg:px-40">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/groups" element={<GroupsPage />} />

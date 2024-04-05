@@ -7,7 +7,7 @@ function Navbar() {
   const { pathname } = location;
 
   return (
-    <header className="flex justify-between items-center flex-wrap sm:flex-nowrap bg-vaki-primary text-white p-4 text-2xl">
+    <header className="flex justify-between items-center flex-wrap sm:flex-nowrap bg-vaki-primary text-white p-4 lg:px-40 text-2xl">
       <div>
         <Link className="hover:underline" to="/">
           <div className="flex items-center gap-2">
