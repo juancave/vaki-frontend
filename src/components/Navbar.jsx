@@ -7,7 +7,7 @@ function Navbar() {
   const { pathname } = location;
 
   return (
-    <header className="flex justify-between items-center flex-wrap sm:flex-nowrap bg-vaki-primary text-white p-4 text-xl sm:text-2xl">
+    <header className="flex justify-between items-center flex-wrap sm:flex-nowrap bg-vaki-primary text-white p-4 text-2xl">
       <div>
         <Link className="hover:underline" to="/">
           <div className="flex items-center gap-2">
@@ -28,9 +28,9 @@ function Navbar() {
 
 function NavbarLink({ pathname, path, text, hideOnMobile }) {
   return (
-    <Link className="hover:underline relative flex justify-center" to={path}>
+    <Link className="lg:hover:underline relative flex justify-center" to={path}>
       {text}
-      {pathname === path && <TriangleUp hideOnMobile={hideOnMobile} />}
+      <TriangleUp hideOnMobile={hideOnMobile} visible={pathname === path} />
     </Link>
   );
 }
@@ -42,10 +42,14 @@ NavbarLink.propTypes = {
   hideOnMobile: PropTypes.bool,
 };
 
-function TriangleUp({ hideOnMobile }) {
+function TriangleUp({ hideOnMobile, visible }) {
   return (
     <div
-      className={`w-0 h-0 absolute bottom-[-16px] sm:bottom-[-18px] ${hideOnMobile ? 'hidden sm:block' : ''}
+      className={`${
+        visible ? 'opacity-100' : 'opacity-0'
+      } transition-opacity duration-500 w-0 h-0 absolute bottom-[-16px] sm:bottom-[-19px] ${
+        hideOnMobile ? 'hidden sm:block' : ''
+      }
     border-l-[8px] border-l-transparent
     border-b-[8px] border-b-white
     border-r-[8px] border-r-transparent`}
@@ -55,6 +59,7 @@ function TriangleUp({ hideOnMobile }) {
 
 TriangleUp.propTypes = {
   hideOnMobile: PropTypes.bool,
+  visible: PropTypes.bool,
 };
 
 export default Navbar;
